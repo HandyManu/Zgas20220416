@@ -18,4 +18,10 @@ productsController.insertProducts = async(req,res)=>{
     const{name,descripcion,price,stock}= req.body;
     const newProduct = new productsModel({ name,descripcion,price,stock })
     await newProduct.save()
+    res.json({message:"products saved"})
+}
+
+//delete
+productsController.deleteProducts = async(req,res)=>{
+    await productsModel.findByIdAndDelete(req.params.id)
 }
