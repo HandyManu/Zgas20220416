@@ -13,3 +13,9 @@ res.json(products)
 }
 
 //insert 
+
+productsController.insertProducts = async(req,res)=>{
+    const{name,descripcion,price,stock}= req.body;
+    const newProduct = new productsModel({ name,descripcion,price,stock })
+    await newProduct.save()
+}
