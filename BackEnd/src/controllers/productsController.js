@@ -4,6 +4,7 @@
 
 const productsController  = {};
 
+import req from "express/lib/request";
 import productsModel from "../models/products.js"
 
 //select
@@ -24,4 +25,13 @@ productsController.insertProducts = async(req,res)=>{
 //delete
 productsController.deleteProducts = async(req,res)=>{
     await productsModel.findByIdAndDelete(req.params.id)
+    res.json({message:"products eliminated"})
+}
+
+//update
+productsController.updateProducts=async(req,res) => {
+    const {name,descripcion,price,stock} =req.body
+    const updateProducts = await productsModel.findByIdAndUpdate(req.params.id,
+        {name,descripcion,price,stock},{new:true})
+        res.json({message:"products updated"})
 }
