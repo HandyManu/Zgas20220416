@@ -1,6 +1,5 @@
 //campos : nombre , descripcion , precio , stock 
 
-import { type } from "express/lib/response";
 import { Schema,model } from "mongoose";
 
 const productsSchema = new Schema({

@@ -4,7 +4,7 @@
 
 const productsController  = {};
 
-import req from "express/lib/request";
+
 import productsModel from "../models/products.js"
 
 //select
