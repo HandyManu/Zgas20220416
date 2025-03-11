@@ -1,7 +1,9 @@
 //importarvtodo lo de la libreria que acabo de descargar 
+
 import mongoose from "mongoose";
 
 import {config} from "./src/config.js";
+
 //guardoen una constante la url de mi base de datos 
 
 //const uri = "mongodb://127.0.0.1:27017/zgasdb";
@@ -12,6 +14,7 @@ mongoose.connect(config.MONGO_URI);
 //comprobar que todo funcione 
 
 //Creo una constante que es igual a la conexion 
+
 const connection = mongoose.connection;
 
 connection.once("open",()=>{
