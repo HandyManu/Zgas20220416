@@ -12,28 +12,28 @@ clientsController.getClients = async (req, res) => {
 };
 
 // INSERT
-productsController.insertProducts = async (req, res) => {
-  const { name, description, price, stock } = req.body;
-  const newProduct = new productsModel({ name, description, price, stock });
-  await newProduct.save();
-  res.json({ message: "Products saved" });
+clientsController.insertClientsts = async (req, res) => {
+  const { name, lastName, birthday, email , password , phone , dui , isVerified } = req.body;
+  const newClient = new clientsModel({ name, lastName, birthday, email , password , phone , dui , isVerified});
+  await newClient.save();
+  res.json({ message: "Client saved" });
 };
 
 // DELETE
-productsController.deleteProducts = async (req, res) => {
-  await productsModel.findByIdAndDelete(req.params.id);
-  res.json({ message: "product deleted" });
+clientsController.deleteClient = async (req, res) => {
+  await clientsModel.findByIdAndDelete(req.params.id);
+  res.json({ message: "Client deleted" });
 };
 
 // UPDATE
-productsController.updateProducts = async (req, res) => {
-  const { name, description, price, stock } = req.body;
-  const updatedProducts = await productsModel.findByIdAndUpdate(
+clientsController.updateClient = async (req, res) => {
+  const { name, lastName, birthday, email , password , phone , dui , isVerified } = req.body;
+  const updateClient = await clientsModel.findByIdAndUpdate(
     req.params.id,
-    { name, description, price, stock },
+    { name, lastName, birthday, email , password , phone , dui , isVerified },
     { new: true }
   );
-  res.json({ message: "product updated successfully" });
+  res.json({ message: "Client updated successfully" });
 };
 
-export default productsController;
+export default clientsController;
