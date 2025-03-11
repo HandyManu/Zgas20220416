@@ -1,7 +1,8 @@
-//Clientes name lastName birthday email password telephone dui isVerified
+//CEmpleados name lastName birthday  email address hireDate  password phone dui isssNumber isVerified
+
 import { Schema,model } from "mongoose";
 
-const ClientSchema = new Schema({
+const CostumersSchema = new Schema({
 
     name: {
         type: String,
@@ -20,6 +21,14 @@ const ClientSchema = new Schema({
         required: true,
         unique: true
     },
+    address: {
+        type: String,
+        required: true
+    },
+    hireDate: {
+        type: Date,
+        required: true
+    },
     password: {
         type: String,
         required: true
@@ -33,6 +42,11 @@ const ClientSchema = new Schema({
         required: true,
         unique: true
     },
+    isssNumber: {
+        type: String,
+        required: true,
+        unique: true
+    },
     isVerified: {
         type: Boolean,
         default: false
@@ -42,4 +56,4 @@ const ClientSchema = new Schema({
     strict:false
 })
 
-export default model("clients",ClientSchema );
+export default model("costumers",CostumersSchema );

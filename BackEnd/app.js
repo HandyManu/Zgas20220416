@@ -16,6 +16,8 @@ app.use("/api/products",productRoutes);
 
 app.use("/api/clients",ClientsRoutes);
 
+app.use("/api/costumers",CostumersRoutes);
+
 //exporto la constante para usarla cuando quiera 
 
 export default app;
