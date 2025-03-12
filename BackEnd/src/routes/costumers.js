@@ -1,7 +1,7 @@
 //este archivo sirve para definir que metoos del cud va atener mi ruta /api/products 
 
 import express from "express";
-import costumersController  from "../controllers/costumersControllers.js";
+import costumersController  from "../controllers/costumersController.js";
 
 const router = express.Router ()
 
