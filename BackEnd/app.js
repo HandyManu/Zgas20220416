@@ -10,7 +10,7 @@ import CostumersRoutes from "../BackEnd/src/routes/costumers.js"
 
 import branchRoutes from "../BackEnd/src/routes/branch.js"
 
-import ReviewsRouters from "./src/models/Reviews.js";
+import ReviewsRouters from "./BackEnd/src/routes/review.js";
 
 //creo una contante d ela libreria que acabo de importar y la ejecuto
 
@@ -26,7 +26,7 @@ app.use("/api/costumers",CostumersRoutes);
 
 app.use("/api/branch",branchRoutes);
 
-app.use("/api/reviews",ReviewsRouters);
+app.use("/api/review",ReviewsRouters);
 
 //exporto la constante para usarla cuando quiera 
 
