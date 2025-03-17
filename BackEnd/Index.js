@@ -2,6 +2,7 @@
 
 import app from "./app.js"
 
+
 //importo el archivo de conexion de la base d e dtaos 
 
 import"./database.js";
@@ -12,9 +13,9 @@ import{config} from "./src/config.js";
 
 async function main() {
 
-    app.listen(config.PORT);
+    app.listen(config.server.port)
 
-    console.log("server functioning");
+    console.log("server functioning"+ config.server.port);
 }
 //ejecutamos la funcion  
 

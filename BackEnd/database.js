@@ -6,10 +6,14 @@ import {config} from "./src/config.js";
 
 //guardoen una constante la url de mi base de datos 
 
-//const uri = "mongodb://127.0.0.1:27017/zgasdb";
+//const uri = ;
 
 //conecto la base  de datos 
-mongoose.connect(config.MONGO_URI);
+
+
+mongoose.connect(config.db.URI);
+
+
 
 //comprobar que todo funcione 
 
