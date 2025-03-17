@@ -24,6 +24,8 @@ app.use("/api/costumers",CostumersRoutes);
 
 app.use("/api/branch",branchRoutes);
 
+app.use("/api/reviews")
+
 //exporto la constante para usarla cuando quiera 
 
 export default app;
