@@ -29,7 +29,8 @@ reviewsControllers.deleteReview = async(req,res) => {
 
 reviewsControllers.updateReview = async(req,res) =>{
     const {comment , rating , idCliente} = req.body;
-    await ReviewsModel.findByIdAndUpdate(req.params.id,{comment , rating , idCliente} , {new:true})
+    await ReviewsModel.findByIdAndUpdate(req.params.id,
+    {comment , rating , idCliente} , {new:true})
     res.json({message:"reviews updated"})
 }
 

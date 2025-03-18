@@ -12,6 +12,8 @@ import branchRoutes from "../BackEnd/src/routes/branch.js"
 
 import ReviewsRouters from "../BackEnd/src/routes/review.js";
 
+import EvaluationRouters from "../BackEnd/src/routes/evaluations.js";
+
 //creo una contante d ela libreria que acabo de importar y la ejecuto
 
 const app = express();
@@ -27,6 +29,8 @@ app.use("/api/costumers",CostumersRoutes);
 app.use("/api/branch",branchRoutes);
 
 app.use("/api/review",ReviewsRouters);
+
+app.use("/api/evaluation",EvaluationRouters)
 
 //exporto la constante para usarla cuando quiera 
 

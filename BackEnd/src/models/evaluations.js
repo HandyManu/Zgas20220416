@@ -27,4 +27,4 @@ const EvaluationSchema = new Schema({
     strict:false
 })
 
-export default model("clients",ClientSchema );
+export default model("evaluation",EvaluationSchema );
