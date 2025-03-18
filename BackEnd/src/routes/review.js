@@ -1,7 +1,7 @@
 import express from "express";
 import reviewsControllers from "../controllers/reviewsControllers";
 
-const router = expess.router();
+const router = express.Router();
 
 router.route("/")
 .get(reviewsControllers.getReviews)

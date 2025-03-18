@@ -10,7 +10,7 @@ import CostumersRoutes from "../BackEnd/src/routes/costumers.js"
 
 import branchRoutes from "../BackEnd/src/routes/branch.js"
 
-import ReviewsRouters from "./BackEnd/src/routes/review.js";
+import ReviewsRouters from "../BackEnd/src/routes/review.js";
 
 //creo una contante d ela libreria que acabo de importar y la ejecuto
 

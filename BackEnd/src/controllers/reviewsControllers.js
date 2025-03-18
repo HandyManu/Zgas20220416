@@ -4,7 +4,7 @@ import ReviewsModel from "../models/Reviews.js";
 //select
 
 reviewsControllers.getReviews = async (req,res)=>{
-    const Reviews = await ReviewsModel.find().populate("idClient")
+    const Reviews = await ReviewsModel.find().populate("idCliente")
     res.json(Reviews)
 }
 
@@ -14,7 +14,7 @@ reviewsControllers.insertReview = async (req,res) => {
     const { comment , rating , idCliente} = req.body;
     const newReview = new ReviewsModel({ comment , rating , idCliente})
     await newReview.save()
-    ResizeObserver.json({message:"review saved"})
+    res.json({message:"review saved"});
 }
 
 
