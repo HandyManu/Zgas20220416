@@ -1,5 +1,5 @@
-import employeeModel from "../models/employee.js";
-import bcryptjs from "bcryptjs.js";
+import employeeModel from "../models/costumers.js";
+import bcryptjs from "bcryptjs";
 import jsonwebtoken from "jsonwebtoken"; 
 import { config } from "../config.js";
 
@@ -34,9 +34,23 @@ registerEmployeeController.register = async (req, res) => {
         await newEmployee.save();
 
         //generamos el token
-        const token = jsonwebtoken.sign({ id: newEmployee._id }, config.SECRET_KEY, { expiresIn: '1d' });
+        
+        jsonwebtoken.sign({ id: newEmployee._id }, //secreto
+            config.JWT.SECRET, 
+            //cuando expira 
+            { expiresIn: config.JWT.SECRET.JWT.expiresIn }, 
+            (error , token) => {
+                if (error) console.log(error);
+                res.cookie("authToken", token);
+            }
+        );   
 
 
     } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Server Error" });
         
-    }
+    }};
+
+    export default registerEmployeeController;
+
