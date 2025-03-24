@@ -32,6 +32,8 @@ app.use("/api/review",ReviewsRouters);
 
 app.use("/api/evaluation",EvaluationRouters)
 
+app.use("/api/registerEmployees")
+
 //exporto la constante para usarla cuando quiera 
 
 export default app;
