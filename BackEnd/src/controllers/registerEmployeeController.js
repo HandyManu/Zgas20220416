@@ -38,7 +38,7 @@ registerEmployeeController.register = async (req, res) => {
         jsonwebtoken.sign({ id: newEmployee._id }, //secreto
             config.JWT.SECRET, 
             //cuando expira 
-            { expiresIn: config.JWT.SECRET.JWT.expiresIn }, 
+            { EXPIRES_IN: config.JWT.SECRET.JWT.EXPIRES_IN }, 
             (error , token) => {
                 if (error) console.log(error);
                 res.cookie("authToken", token);
@@ -48,7 +48,7 @@ registerEmployeeController.register = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).json({ message: "Server Error" });
+        
         
     }};
 

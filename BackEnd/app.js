@@ -23,7 +23,7 @@ app.use("/api/costumers",CostumersRoutes);
 app.use("/api/branch",branchRoutes);
 app.use("/api/review",ReviewsRouters);
 app.use("/api/evaluation",EvaluationRouters)
-app.use("/api/registerEmployees",registerEmployeesRoutes)
+app.use("/api/registerEmployee",registerEmployeesRoutes)
 
 
 
