@@ -10,6 +10,7 @@ import EvaluationRouters from "../BackEnd/src/routes/evaluations.js";
 import registerEmployeesRoutes from "../BackEnd/src/routes/registerEmployee.js";
 import cookieParser from "cookie-parser";
 import loginRoutes from "../BackEnd/src/routes/login.js";
+import logoutRoutes from "../BackEnd/src/routes/logout.js";
 
 //creo una contante d ela libreria que acabo de importar y la ejecuto
 
@@ -26,6 +27,7 @@ app.use("/api/review",ReviewsRouters);
 app.use("/api/evaluation",EvaluationRouters)
 app.use("/api/registerEmployee",registerEmployeesRoutes);
 app.use("/api/login",loginRoutes);
+app.use("/api/logout",logoutRoutes);
 
 
 
