@@ -35,13 +35,17 @@ registerEmployeeController.register = async (req, res) => {
 
         //generamos el token
         
-        jsonwebtoken.sign({ id: newEmployee._id }, //secreto
+        jsonwebtoken.sign(
+            //que voy a guardar
+            { id: newEmployee._id },
+             //secreto
             config.JWT.SECRET, 
             //cuando expira 
-            { EXPIRES_IN: config.JWT.SECRET.JWT.EXPIRES_IN }, 
+            { expiresIn: config.JWT.EXPIRES_IN }, 
             (error , token) => {
                 if (error) console.log(error);
                 res.cookie("authToken", token);
+                res.json({ message: "User registered successfully" });
             }
         );   
 
@@ -49,7 +53,7 @@ registerEmployeeController.register = async (req, res) => {
     } catch (error) {
         console.log(error);
         
-        
+    
     }};
 
     export default registerEmployeeController;
