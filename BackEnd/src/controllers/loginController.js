@@ -37,7 +37,7 @@ loginController.login = async (req, res) => {
         }
         //comprobar la contraseña solo si no es admin 
         if (userType!== "admin") {
-            const isMatch = await bcryptjs.compare(password, userFound.password);
+            const isMatch = await bcryptjs.compare (password, userFound.password);
             if (!isMatch) {
                 return res.json({ message: "Incorrect password" });
             }
@@ -52,15 +52,13 @@ loginController.login = async (req, res) => {
             //duracion del token 1h
             { expiresIn: config.JWT.EXPIRES_IN },
             //FUNCION FLECHA
-            (err, token) => {
+            (error, token) => {
                 if (error ) console.log(error);
                 res.cookie("authToken",token)
                 res.json({ message: "Logged in successfully" });
                 
             }
         )
-
-
 
     }
 
