@@ -39,7 +39,7 @@ registerClientsController.register=async (req,res)=>{
 
             { email,verificationCode },
 
-             config.JWT.secret,
+             config.JWT.SECRET, //secreto
 
               {expiresIn: "3h",}
     );
@@ -56,13 +56,50 @@ registerClientsController.register=async (req,res)=>{
     })
 
     const mailOptions = {
-        from: config.email_user,
+        from: config.email.email_user,
         to: email,
         subject: "Verificación de cuenta",
-        text: `Tu código de verificación es: ${verificationCode}`,
+        text: `Tu código de verificación es: ${verificationCode} + expira en 3 horas`,
     };
 
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error("Error al enviar el correo:", error);
+        }
+            console.log("Correo enviado:", info.response);
+        
+    });
+    res.json({ message: "Cliente registrado exitosamente" });   
+
     } catch (error) {
+        console.error("Error al registrar el cliente:", error);
+        res.status(500).json({ message: "Error al registrar el cliente" });
+        
+    }
+};
+registerClientsController.verifyCodeEmail=async (req,res)=>{
+    const {requiredCode}=req.body;
+    const token = req.cookies.verificationToken;
+
+    try {
+        
+        const decodedToken = jsonwebtoken.verify(token, config.JWT.secret);
+        const { email, verificationCode: storedCode} = decodedToken;
+
+        if (requiredCode !== storedCode) {
+            return res.status(400).json({ message: "Código de verificación incorrecto" });
+        }
+        const client = await clientsModel.findOne({ email });
+        client.isVerified = true;
+        await client.save();
+        res.clearCookie("verificationToken");
+        res.status(200).json({ message: "Código de verificación correcto" });
+
+        
+    } catch (error) {
+        console.error("Error al verificar el código de verificación:", error);
+        res.status(500).json({ message: "Error al verificar el código de verificación" });
         
     }
 }
+export default registerClientsController;
