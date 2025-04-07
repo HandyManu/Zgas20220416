@@ -28,6 +28,7 @@ app.use("/api/evaluation",EvaluationRouters)
 app.use("/api/registerEmployee",registerEmployeesRoutes);
 app.use("/api/login",loginRoutes);
 app.use("/api/logout",logoutRoutes);
+app.use("/api/registerClients")
 
 
 
