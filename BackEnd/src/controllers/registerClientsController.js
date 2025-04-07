@@ -50,10 +50,17 @@ registerClientsController.register=async (req,res)=>{
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: config.email,
-            pass: config.password,
+            user: config.email_user,
+            pass: config.email_pass,
         },
-    });
+    })
+
+    const mailOptions = {
+        from: config.email_user,
+        to: email,
+        subject: "Verificación de cuenta",
+        text: `Tu código de verificación es: ${verificationCode}`,
+    };
 
     } catch (error) {
         
