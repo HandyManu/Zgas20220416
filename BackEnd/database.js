@@ -14,7 +14,6 @@ import {config} from "./src/config.js";
 mongoose.connect(config.db.URI);
 
 
-
 //comprobar que todo funcione 
 
 //Creo una constante que es igual a la conexion 

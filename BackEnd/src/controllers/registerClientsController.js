@@ -12,12 +12,13 @@ registerClientsController.register=async (req,res)=>{
     const {name,lastName,birthday,email,password,phone,dui,isVerified}=req.body;
 
     try {
-        const existingClient = await clientsModel.findOne({ email });
+        const existingClient = await clientsModel.findOne( { email });
         if (existingClient) {
             return res.status(400).json({ message: "El cliente ya existe" });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
+        
         const newClient = new clientsModel({
             name,
             lastName,
@@ -59,22 +60,21 @@ registerClientsController.register=async (req,res)=>{
         from: config.email.email_user,
         to: email,
         subject: "Verificación de cuenta",
-        text: `Tu código de verificación es: ${verificationCode} + expira en 3 horas`,
+        text: "Tu código de verificación es:" + verificationCode + "/n expira en 3 horas",
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.error("Error al enviar el correo:", error);
+            return console.log("Error al enviar el correo:", error);
         }
-            console.log("Correo enviado:", info.response);
+        console.log("Correo enviado:" + info);
         
     });
-    res.json({ message: "Cliente registrado exitosamente" });   
+
+    res.json({ message: "Cliente registrado exitosamente,por favor verifica el correo " });   
 
     } catch (error) {
-        console.error("Error al registrar el cliente:", error);
-        res.status(500).json({ message: "Error al registrar el cliente" });
-        
+        console.log("Error al registrar el cliente:" + error);        
     }
 };
 registerClientsController.verifyCodeEmail=async (req,res)=>{
@@ -87,18 +87,20 @@ registerClientsController.verifyCodeEmail=async (req,res)=>{
         const { email, verificationCode: storedCode} = decodedToken;
 
         if (requiredCode !== storedCode) {
-            return res.status(400).json({ message: "Código de verificación incorrecto" });
+            return res.json({ message: "Código de verificación incorrecto" });
         }
+
         const client = await clientsModel.findOne({ email });
         client.isVerified = true;
         await client.save();
+
         res.clearCookie("verificationToken");
+
         res.status(200).json({ message: "Código de verificación correcto" });
 
         
     } catch (error) {
-        console.error("Error al verificar el código de verificación:", error);
-        res.status(500).json({ message: "Error al verificar el código de verificación" });
+        console.log("Error al verificar el código de verificación:" + error);
         
     }
 }
