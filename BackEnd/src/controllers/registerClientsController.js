@@ -51,8 +51,8 @@ registerClientsController.register=async (req,res)=>{
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: config.email_user,
-            pass: config.email_pass,
+            user: config.email.email_user,
+            pass: config.email.email_pass,
         },
     })
 
