@@ -13,6 +13,7 @@ import loginRoutes from "../BackEnd/src/routes/login.js";
 import logoutRoutes from "../BackEnd/src/routes/logout.js";
 import registerClients from "../BackEnd/src/routes/registerClients.js";
 import blogRoutes from "../BackEnd/src/routes/blog.js"; //importo la ruta de los blogs
+import { validateAuthToken } from "./src/middlewares/validateAuthToken.js";
 
 //creo una contante d ela libreria que acabo de importar y la ejecuto
 
@@ -21,17 +22,17 @@ const app = express();
 app.use(cookieParser());
 
 app.use(express.json());
-app.use("/api/products",productRoutes);
+app.use("/api/products",validateAuthToken(["costumer","admin"]),productRoutes);
 app.use("/api/clients",ClientsRoutes);
 app.use("/api/costumers",CostumersRoutes);
 app.use("/api/branch",branchRoutes);
-app.use("/api/review",ReviewsRouters);
+app.use("/api/review",validateAuthToken(["costumer"]),ReviewsRouters);
 app.use("/api/evaluation",EvaluationRouters)
 app.use("/api/registerEmployee",registerEmployeesRoutes);
 app.use("/api/login",loginRoutes);
 app.use("/api/logout",logoutRoutes);
 app.use("/api/registerClients",registerClients);
-app.use("/api/blog",blogRoutes); 
+app.use("/api/blog",validateAuthToken(["costumer"]),blogRoutes); 
 
 
 

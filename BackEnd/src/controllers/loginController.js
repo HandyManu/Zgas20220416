@@ -21,9 +21,11 @@ loginController.login = async (req, res) => {
             userFound = { _id: "admin" };
 
         } else {
-            //empleado
+            
             userFound = await clientsModel.findOne({ email });
-            userType = "employee";
+            userType = "clients";
+
+            //empleado
 
             if (!userFound) {
                 userFound = await costumersModel.findOne({ email });
