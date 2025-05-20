@@ -11,11 +11,15 @@ const Nav = () => {
                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link" to="/about">About</Link>
+                <Link className="nav-link" to="/about">Crud de blog</Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link" to="/contact">Contact</Link>
+                <Link className="nav-link" to="/contact">Crud de branch</Link>
                 </li>
+                <li className="nav-item">
+                <Link className="nav-link" to="/contact">Crud de evaluation</Link>
+                </li>
+
             </ul>
             </div>
         </div>

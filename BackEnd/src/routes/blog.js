@@ -14,4 +14,9 @@ router.route("/")
 
 .post(upload.single("image"),blogController.createBlog)
 
+router.route("/:id")
+    .get(blogController.getBlogById) // Obtener un blog por ID
+    .put(blogController.updateBlog) // Actualizar un blog por ID
+    .delete(blogController.deleteBlog); // Eliminar un blog por ID
+
 export default router
