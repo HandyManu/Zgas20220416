@@ -1,6 +1,7 @@
 //importo todos los elemnetos de la ibreria express 
 
 import express from "express";
+import corse from "cors"; 
 import productRoutes from "../BackEnd/src/routes/products.js"
 import ClientsRoutes from "../BackEnd/src/routes/clients.js"
 import CostumersRoutes from "../BackEnd/src/routes/costumers.js"
@@ -18,6 +19,13 @@ import { validateAuthToken } from "./src/middlewares/validateAuthToken.js";
 //creo una contante d ela libreria que acabo de importar y la ejecuto
 
 const app = express();
+
+app.use(
+    corse({
+        origin:"*",
+        Credentials:true,
+    })
+);
 
 app.use(cookieParser());
 
