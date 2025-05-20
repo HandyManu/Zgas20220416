@@ -11,7 +11,7 @@ const Home = () => {
                 <h2>Características Principales</h2>
                 <ul className="list-group">
                     <li className="list-group-item">Página de información</li>
-                    <li className="list-group-item">Crud de blog </li>
+                    <li className="list-group-item">Crud de products </li>
                     <li className="list-group-item">Crud de branch</li>
                     <li className="list-group-item">Crud de evaluation</li>
                 </ul>
