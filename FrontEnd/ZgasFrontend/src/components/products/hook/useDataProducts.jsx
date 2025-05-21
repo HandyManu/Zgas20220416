@@ -104,8 +104,15 @@ const useDataProducts = () => {
     };
 
     const handleUpdate = async (e) => {
+
         e.preventDefault();
+        if (!productName || !ProductDescripcion || !ProductPrice || !ProductStock) {
+            setError("Todos los campos son obligatorios");
+            toast.error("Por favor completa todos los campos");
+            return;
+        }
         setLoading(true);
+        console.log("id:", id);
         try {
             const updatedProduct = {
                 name: productName,
@@ -118,11 +125,13 @@ const useDataProducts = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(updatedProduct),
             });
-            if (!response.ok) throw new Error("Error al actualizar el producto");
+            if(!response.ok) throw new Error("Error al actualizar el producto");
+
             toast.success("Producto actualizado con éxito");
             setSuccess("El producto se ha actualizado con éxito");
             cleanData();
-            setActiveTab("list");
+            //setActiveTab("list");
+            console.log("en funcion update");
             fetchData();
         } catch (error) {
             setError(error.message);

@@ -54,7 +54,7 @@ const Products = () => {
                             className="px-4 py-2 text-gray-600 hover:text-gray-800 focus:outline-none focus:border-b-2 focus:border-blue-500"
                             onClick={() => {
                                 setActiveTab("form");
-                                cleanData();
+                                cleanData(); // Asegúrate de que esta función limpia los datos correctamente
                             }}
                         >
                             Gestionar Productos
@@ -81,6 +81,7 @@ const Products = () => {
                         {activeTab === "form" && (
                             <div>
                                 <RegisterProducts
+                                handleUpdate={handleUpdate}
                                     productName={productName}
                                     setProductName={setProductName}
                                     ProductDescripcion={ProductDescripcion}

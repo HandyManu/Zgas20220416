@@ -14,6 +14,7 @@ const ProductsRegister = ({
   handleUpdate,
 }) => (
   <form onSubmit={id ? handleUpdate : handleSubmit}>
+    <h1>id: {id}</h1>
     <input
       type="text"
       placeholder="Nombre"
