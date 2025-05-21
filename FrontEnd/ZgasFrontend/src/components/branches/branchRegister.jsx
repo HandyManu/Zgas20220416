@@ -49,4 +49,3 @@ const BranchRegister = ({
     );
 
 export default BranchRegister;
-    
