@@ -3,8 +3,8 @@ import React from "react";
 const BranchRegister = ({
     setBranchName,
     branchName,
-    setBranchAddress,
-    branchAddress,
+    setBranchAdress, // corregido
+    branchAdress,    // corregido
     setBranchPhone,
     branchPhone,
     setBranchSchedule,
@@ -12,7 +12,7 @@ const BranchRegister = ({
     id,
     handleSubmit,
     handleUpdate,
-    }) => (
+}) => (
     <form onSubmit={id ? handleUpdate : handleSubmit}>
         <h1>id: {id}</h1>
         <input
@@ -25,8 +25,8 @@ const BranchRegister = ({
         <input
             type="text"
             placeholder="Dirección"
-            value={branchAddress}
-            onChange={(e) => setBranchAddress(e.target.value)}
+            value={branchAdress} // corregido
+            onChange={(e) => setBranchAdress(e.target.value)} // corregido
             required
         />
         <input
@@ -45,7 +45,6 @@ const BranchRegister = ({
         />
         <button type="submit">{id ? "Actualizar" : "Registrar"}</button>
     </form>
-    
-    );
+);
 
 export default BranchRegister;
