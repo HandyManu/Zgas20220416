@@ -8,6 +8,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 import Products from "../pages/products";
+import Branches from "../pages/branches";
 import { PrivateRoute } from "./PrivateRoute";
 import { useAuth } from "../context/AuthContext";
 
@@ -32,6 +33,7 @@ function Navegation() {
 
         <Route element={<PrivateRoute />}>
           <Route path="/products" element={<Products />} />
+          <Route path="/branches" element={<Branches />} />
           
         </Route>
       </Routes>

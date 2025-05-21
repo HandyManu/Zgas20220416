@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Productos from "./pages/products";
+import Branches from "./pages/branches";
 
 
 import Nav from "./components/Nav";
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/productos" element={<Productos />} />
+          <Route path="/branch" element={<Branches />} />
         </Routes>
       </div>
     </Router>
