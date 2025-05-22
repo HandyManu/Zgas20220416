@@ -63,8 +63,8 @@ const useDataProducts = () => {
                 body: JSON.stringify(newProduct),
             });
             if (!response.ok) throw new Error("Error al registrar el producto");
-            toast.success("Producto registrado con éxito");
-            setSuccess("El producto se ha registrado con éxito");
+            toast.success("Sucursal registrada con éxito");
+            setSuccess("La sucursal se ha registrado con éxito");
             cleanData();
             fetchData();
         } catch (error) {

@@ -31,7 +31,7 @@ const BranchCard = ({ branch, deleteBranch, updateBranch }) => {
           {branch.name}
         </h5>
         <p className="card-text mb-1" style={{ color: "#6c757d" }}>
-           Direccion de la sucursal:{branch.adress}
+           Direccion de la sucursal:{branch.address}
         </p>
         <div className="flex justify-between items-center mb-3">
           <span

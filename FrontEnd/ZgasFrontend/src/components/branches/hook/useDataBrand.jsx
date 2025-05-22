@@ -3,10 +3,11 @@ import toast from "react-hot-toast";
 
 const useDataBranches = () => {
     const ApiBrands = "http://localhost:4000/api/branch";
+
     const [activeTab, setActiveTab] = useState("list");
     const [id, setId] = useState("");
     const [branchName, setBranchName] = useState("");
-    const [branchAdress, setBranchAdress] = useState("");
+    const [branchAddress, setBranchAddress] = useState("");
     const [branchPhone, setBranchPhone] = useState("");
     const [branchSchedule, setBranchSchedule] = useState("");
     const [branches, setBranches] = useState([]);
@@ -17,16 +18,17 @@ const useDataBranches = () => {
     const cleanData = () => {
         setId("");
         setBranchName("");
-        setBranchAdress("");
+        setBranchAddress("");
         setBranchPhone("");
         setBranchSchedule("");
         
     };
+
     const fetchData = async () => {
         setLoading(true);
         try {
             const response = await fetch(ApiBrands);
-            if (!response.ok) throw new Error("Error al obtener los productos");
+            if (!response.ok) throw new Error("Error al obtener las sucursales");
             const data = await response.json();
             setBranches(data);
         } catch (error) {
@@ -42,7 +44,7 @@ const useDataBranches = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!branchName || !branchAdress || !branchPhone || !branchSchedule) {
+        if (!branchName || !branchAddress || !branchPhone || !branchSchedule) {
             setError("Todos los campos son obligatorios");
             toast.error("Por favor completa todos los campos");
             return;
@@ -51,7 +53,7 @@ const useDataBranches = () => {
         try {
             const newBrand = {
                 name: branchName,
-                adress: branchAdress,
+                address: branchAddress,
                 phone: branchPhone,
                 schedule: branchSchedule,
             };
@@ -67,7 +69,7 @@ const useDataBranches = () => {
             fetchData();
         } catch (error) {
             setError(error.message);
-            toast.error("Ocurrió un error al registrar el producto");
+            toast.error("Ocurrió un error al registrar la sucursal");
         } finally {
             setLoading(false);
         }
@@ -79,12 +81,12 @@ const useDataBranches = () => {
             const response = await fetch(`${ApiBrands}/${id}`, {
                 method: "DELETE",
             });
-            if (!response.ok) throw new Error("Error al eliminar el producto");
-            toast.success("Producto eliminado con éxito");
+            if (!response.ok) throw new Error("Error al eliminar la sucursal");
+            toast.success("Sucrsal eliminada con éxito");
             fetchData();
         } catch (error) {
             setError(error.message);
-            toast.error("Ocurrió un error al eliminar el producto");
+            toast.error("Ocurrió un error al eliminar la sucursal");
         } finally {
             setLoading(false);
         }
@@ -93,7 +95,7 @@ const useDataBranches = () => {
     const updateBranches = (dataBranches) => {
         setId(dataBranches._id);
         setBranchName(dataBranches.name);
-        setBranchAdress(dataBranches.adress);
+        setBranchAddress(dataBranches.address);
         setBranchPhone(dataBranches.phone);
         setBranchSchedule(dataBranches.schedule);
         setError(null);
@@ -104,7 +106,7 @@ const useDataBranches = () => {
     const handleUpdate = async (e) => {
 
         e.preventDefault();
-        if (!branchName || !branchAdress || !branchPhone || !branchSchedule) {
+        if (!branchName || !branchAddress || !branchPhone || !branchSchedule) {
             setError("Todos los campos son obligatorios");
             toast.error("Por favor completa todos los campos");
             return;
@@ -114,7 +116,7 @@ const useDataBranches = () => {
         try {
             const updatedBrands = {
                 name: branchName,
-                adress: branchAdress,
+                address: branchAddress,
                 phone: branchPhone,
                 schedule: branchSchedule,
             };
@@ -125,15 +127,15 @@ const useDataBranches = () => {
             });
             if(!response.ok) throw new Error("Error al actualizar el producto");
 
-            toast.success("Producto actualizado con éxito");
-            setSuccess("El producto se ha actualizado con éxito");
+            toast.success("La sucursal se ha  actualizado con éxito");
+            setSuccess("La sucursal se ha actualizado con éxito");
             cleanData();
             //setActiveTab("list");
             console.log("en funcion update");
             fetchData();
         } catch (error) {
             setError(error.message);
-            toast.error("Ocurrió un error al actualizar el producto");
+            toast.error("Ocurrió un error al actualizar la sucursal");
         } finally {
             setLoading(false);
         }
@@ -148,8 +150,8 @@ const useDataBranches = () => {
         setId,
         branchName,
         setBranchName,
-        branchAdress,
-        setBranchAdress,
+        branchAddress,
+        setBranchAddress,
         branchPhone,
         setBranchPhone,
         branchSchedule,

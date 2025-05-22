@@ -1,11 +1,12 @@
 import React, { useState, useEffect, use } from "react";
 import RegisterBranches from "../components/branches/branchRegister";
-import ListBranches from "../components/branches/brandList";
+import BrandList from "../components/branches/brandList";
 import { Toaster } from 'react-hot-toast';
 
 import useDataBranches from "../components/branches/hook/useDataBrand";
 
 const Branches = () => {
+
     useEffect(() => {
         document.title = "Sucursales";
     }, []);
@@ -17,8 +18,8 @@ const Branches = () => {
         setId,
         branchName,
         setBranchName,
-        branchAdress,
-        setBranchAdress,
+        branchAddress,
+        setBranchAddress,
         branchPhone,
         setBranchPhone,
         branchSchedule,
@@ -62,7 +63,7 @@ const Branches = () => {
                     <div>
                         {activeTab === "list" && (
                             <div>
-                                <ListBranches
+                                <BrandList
                                     branches={branches}
                                     setBranches={setBranches}
                                     loading={loading}
@@ -83,8 +84,8 @@ const Branches = () => {
                                 handleUpdate={handleUpdate}
                                     branchName={branchName}
                                     setBranchName={setBranchName}
-                                    branchAdress={branchAdress}
-                                    setBranchAdress={setBranchAdress}
+                                    branchAddress={branchAddress}
+                                    setBranchAddress={setBranchAddress}
                                     branchPhone={branchPhone}
                                     setBranchPhone={setBranchPhone}
                                     branchSchedule={branchSchedule}
@@ -113,6 +114,8 @@ const Branches = () => {
 
 
     );
+
+    
 }
 
 export default Branches;

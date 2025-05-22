@@ -3,8 +3,8 @@ import React from "react";
 const BranchRegister = ({
     setBranchName,
     branchName,
-    setBranchAdress, // corregido
-    branchAdress,    // corregido
+    setBranchAddress, 
+    branchAddress,    
     setBranchPhone,
     branchPhone,
     setBranchSchedule,
@@ -25,8 +25,8 @@ const BranchRegister = ({
         <input
             type="text"
             placeholder="Dirección"
-            value={branchAdress} // corregido
-            onChange={(e) => setBranchAdress(e.target.value)} // corregido
+            value={branchAddress} // corregido
+            onChange={(e) => setBranchAddress(e.target.value)} // corregido
             required
         />
         <input

@@ -1,10 +1,10 @@
 import BranchCard from "./branchCard";
+
 import React from "react";
 
-const BrandList = ({ brands, loading, updateBrands, deleteBrands }) => {
-    const safeBrands = Array.isArray(brands) ? brands : [];
+const BrandList = ({ branches = [], loading, updateBranches, deleteBranches }) => {
 
-    return (
+    return(
         <div className="container py-4">
             <h1 className="text-3xl font-bold text-center text-blue-800 mb-6 tracking-tight">
                 Listado de Sucursales
@@ -15,21 +15,21 @@ const BrandList = ({ brands, loading, updateBrands, deleteBrands }) => {
                         <div className="spinner-border text-primary" role="status">
                             <span className="visually-hidden">Cargando...</span>
                         </div>
-                        <div>Cargando sucursales...</div>
+                        <div>Cargando Sucursales...</div>
                     </div>
                 )}
-                {!loading && safeBrands.length === 0 && (
+                {!loading && branches.length === 0 && (
                     <div className="w-full text-center text-gray-400 my-8">
-                        No hay sucursales registradas.
+                        No hay Sucursales registrados.
                     </div>
                 )}
                 <div className="d-flex flex-wrap gap-4 justify-content-center">
-                    {safeBrands.map((branch) => (
+                    {Array.isArray(branches) && branches.map((branch) => (
                         <BranchCard
                             key={branch._id}
                             branch={branch}
-                            deleteBranch={deleteBrands}
-                            updateBranch={updateBrands}
+                            deleteBranch={deleteBranches}
+                            updateBranch={updateBranches}
                         />
                     ))}
                 </div>
