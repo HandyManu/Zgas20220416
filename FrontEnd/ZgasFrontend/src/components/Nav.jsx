@@ -20,6 +20,9 @@ const Nav = () => {
                         <li className="nav-item">
                             <Link className="nav-link" to="/branch">Sucursales</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/costumers">Trabajadores</Link>
+                        </li>
                     </ul>
                 </div>
             </div>

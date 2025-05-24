@@ -13,7 +13,7 @@ const Home = () => {
                     <li className="list-group-item">Página de información</li>
                     <li className="list-group-item">Crud de products </li>
                     <li className="list-group-item">Crud de branch</li>
-                    <li className="list-group-item">Crud de evaluation</li>
+                    <li className="list-group-item">Crud de blog</li>
                 </ul>
             </div>
         </div>
