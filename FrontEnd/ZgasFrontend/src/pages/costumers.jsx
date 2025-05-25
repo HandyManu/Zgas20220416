@@ -48,8 +48,8 @@ const Costumers = () => {
         error,
         setError,
         handleSubmit,
-        deleteCostumers,
-        updateCostumers,
+        deleteCostumer,
+        updateCostumer,
         handleUpdate,
     } = useDataCostumers();
 
@@ -85,8 +85,8 @@ const Costumers = () => {
                                     setLoading={setLoading}
                                     error={error}
                                     setError={setError}
-                                    deleteCostumers={deleteCostumers}
-                                    updateCostumers={updateCostumers}
+                                    deleteCostumer={deleteCostumer}
+                                    updateCostumer={updateCostumer}
                                     setId={setId}
                                     setActiveTab={setActiveTab}
                                     handleUpdate={handleUpdate}

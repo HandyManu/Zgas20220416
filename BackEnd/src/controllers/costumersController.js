@@ -27,7 +27,7 @@ costumerController.deleteCostumers = async (req, res) => {
 // UPDATE
 costumerController.updateCostummers = async (req, res) => {
   const { name , lastName ,birthday , email, address ,hireDate , password ,phone ,dui ,isssNumber ,isVerified } = req.body;
-  const updateClient = await clientsModel.findByIdAndUpdate(
+  const updateCostumer = await costumerModel.findByIdAndUpdate(
     req.params.id,
     { name , lastName ,birthday , email, address ,hireDate , password ,phone ,dui ,isssNumber ,isVerified },
     { new: true }
