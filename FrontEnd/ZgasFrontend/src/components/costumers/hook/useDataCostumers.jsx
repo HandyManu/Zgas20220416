@@ -119,10 +119,10 @@ const useDataCostumers = () => {
         setId(dataCostumers._id);
         setCostumerName(dataCostumers.name);
         setCostumerLastName(dataCostumers.lastName);
-        setCostumerBirthday(dataCostumers.birthday);
+        setCostumerBirthday(new Date(dataCostumers.birthday).toISOString().split("T")[0]); // Formato YYYY-MM-DD
         setCostumerEmail(dataCostumers.email);
         setCostumerAddress(dataCostumers.address);
-        setCostumerHireDate(dataCostumers.hireDate);
+        setCostumerHireDate(new Date(dataCostumers.hireDate).toISOString().split("T")[0]); // Formato YYYY-MM-DD
         setCostumerPassword(dataCostumers.password);
         setCostumerPhone(dataCostumers.phone);
         setCostumerDui(dataCostumers.dui);
