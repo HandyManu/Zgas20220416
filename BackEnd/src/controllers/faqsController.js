@@ -26,6 +26,9 @@ faqsController.createFaq = async (req, res) => {
         if (Level > 5 || Level < 1) {
             return res.status(400).json({ message: 'Level must be between 1 and 5' });
         }
+        if (Questions.length < 5 || asnwer.length < 5 || Questions.length > 500 || Answer.length > 500) {
+            return res.status(400).json({ message: 'Questions must be between 5 and 500 characters' });
+        }
         const newFaq = new faqsModel({
             Questions,
             Answer,
