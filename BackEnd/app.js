@@ -14,6 +14,7 @@ import loginRoutes from "../BackEnd/src/routes/login.js";
 import logoutRoutes from "../BackEnd/src/routes/logout.js";
 import registerClients from "../BackEnd/src/routes/registerClients.js";
 import blogRoutes from "../BackEnd/src/routes/blog.js"; //importo la ruta de los blogs
+import faqsRoutes from "../BackEnd/src/routes/faqs.js"; //importo la ruta de los faqs
 import { validateAuthToken } from "./src/middlewares/validateAuthToken.js";
 
 //creo una contante d ela libreria que acabo de importar y la ejecuto
@@ -41,6 +42,7 @@ app.use("/api/login",loginRoutes);
 app.use("/api/logout",logoutRoutes);
 app.use("/api/registerClients",registerClients);
 app.use("/api/blog",validateAuthToken(["costumer"]),blogRoutes); 
+app.use("/api/faqs",faqsRoutes); // uso la ruta de los faqs
 
 
 
