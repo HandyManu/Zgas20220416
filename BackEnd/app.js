@@ -16,6 +16,9 @@ import registerClients from "../BackEnd/src/routes/registerClients.js";
 import blogRoutes from "../BackEnd/src/routes/blog.js"; //importo la ruta de los blogs
 import faqsRoutes from "../BackEnd/src/routes/faqs.js"; //importo la ruta de los faqs
 import { validateAuthToken } from "./src/middlewares/validateAuthToken.js";
+import swaggerUi from "swagger-ui-express";
+import fs from "fs";
+import path from "path";
 
 //creo una contante d ela libreria que acabo de importar y la ejecuto
 
@@ -29,6 +32,14 @@ app.use(
 );
 
 app.use(cookieParser());
+
+// Configuración de Swagger
+//traemos el json
+const swaggerDocumment = JSON.parse(
+    fs.readFileSync(path.resolve("./docs.json"), "utf8")
+);
+
+app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocumment));
 
 app.use(express.json());
 app.use("/api/products",productRoutes);
