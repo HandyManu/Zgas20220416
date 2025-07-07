@@ -15,6 +15,7 @@ import logoutRoutes from "../BackEnd/src/routes/logout.js";
 import registerClients from "../BackEnd/src/routes/registerClients.js";
 import blogRoutes from "../BackEnd/src/routes/blog.js"; //importo la ruta de los blogs
 import faqsRoutes from "../BackEnd/src/routes/faqs.js"; //importo la ruta de los faqs
+import salesRoutes from "../BackEnd/src/routes/sales.js"; // Importo la ruta de ventas
 import { validateAuthToken } from "./src/middlewares/validateAuthToken.js";
 import swaggerUi from "swagger-ui-express";
 import fs from "fs";
@@ -54,6 +55,7 @@ app.use("/api/logout",logoutRoutes);
 app.use("/api/registerClients",registerClients);
 app.use("/api/blog",validateAuthToken(["costumer"]),blogRoutes); 
 app.use("/api/faqs",faqsRoutes); // uso la ruta de los faqs
+app.use("/api/sales", salesRoutes); // Uso la ruta de ventas
 
 
 
