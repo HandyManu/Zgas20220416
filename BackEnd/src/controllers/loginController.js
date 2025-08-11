@@ -37,12 +37,41 @@ loginController.login = async (req, res) => {
             console.log("no encontrados");
             return res.json({ message: "User not found" });
         }
-        //comprobar la contraseña solo si no es admin 
-        if (userType!== "admin") {
-            const isMatch = await bcryptjs.compare (password, userFound.password);
-            if (!isMatch) {
-                return res.json({ message: "Incorrect password" });
+
+        // verificamos si el usuario esta blockeado 
+
+        if (userType !== "Admin") {
+          if (userFound.lockTime > Date.now()) {
+            const minutosRestantes = Math.ceil(
+              (userFound.lockTime - Date.now()) / 60000
+            );
+            return res
+              .status(403)
+              .json({
+                message:
+                  "cuenta blockeada , faltan" + minutosRestantes + "minutos",
+              });
+          }
+        }
+        //comprobar la contraseña solo si no es admin
+        if (userType !== "admin") {
+          const isMatch = await bcryptjs.compare(password, userFound.password);
+          if (!isMatch) {
+            userFound.loginAttemps = userFound.loginAttemps + 1;
+
+            if (userFound.loginAttemps > 5) {
+              userFound.locktime = Date.now() + 15 * 60 * 1000;
+              await userFound.save();
+
+              return res.status(403).json({ message: "cuenta blockeada" });
             }
+
+            await userFound.save();
+            return res.json({ message: "Incorrect password" });
+          }
+          userFound.loginAttemps = 0;
+          userFound.lockTime = null;
+          await userFound.save();
         }
 
         //generar el token

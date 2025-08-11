@@ -50,6 +50,14 @@ const CostumersSchema = new Schema({
     isVerified: {
         type: Boolean,
         default: false
+    },
+    loginAttemps:{
+        type:Number,
+        default:0
+    },
+    lockTime:{
+        type:Date,
+        default:null
     }
 },{
     timestamps:true,
