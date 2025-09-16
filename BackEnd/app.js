@@ -20,6 +20,7 @@ import { validateAuthToken } from "./src/middlewares/validateAuthToken.js";
 import swaggerUi from "swagger-ui-express";
 import fs from "fs";
 import path from "path";
+import limiter from "./src/middlewares/rateLimiter.js";
 
 //creo una contante d ela libreria que acabo de importar y la ejecuto
 
@@ -56,6 +57,7 @@ app.use("/api/registerClients",registerClients);
 app.use("/api/blog",validateAuthToken(["costumer"]),blogRoutes); 
 app.use("/api/faqs",faqsRoutes); // uso la ruta de los faqs
 app.use("/api/sales", salesRoutes); // Uso la ruta de ventas
+app.use(limiter);
 
 
 
