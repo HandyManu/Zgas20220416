@@ -2,20 +2,20 @@
 
 import express from "express"
 import corse from "cors"
-import productRoutes from "../BackEnd/src/routes/products.js"
-import ClientsRoutes from "../BackEnd/src/routes/clients.js"
-import CostumersRoutes from "../BackEnd/src/routes/costumers.js"
-import branchRoutes from "../BackEnd/src/routes/branch.js"
-import ReviewsRouters from "../BackEnd/src/routes/review.js"
-import EvaluationRouters from "../BackEnd/src/routes/evaluations.js"
-import registerEmployeesRoutes from "../BackEnd/src/routes/registerEmployee.js"
+import productRoutes from "./BackEnd/src/routes/products.js"
+import ClientsRoutes from "./BackEnd/src/routes/clients.js"
+import CostumersRoutes from "./BackEnd/src/routes/costumers.js"
+import branchRoutes from "./BackEnd/src/routes/branch.js"
+import ReviewsRouters from "./BackEnd/src/routes/review.js"
+import EvaluationRouters from "./BackEnd/src/routes/evaluations.js"
+import registerEmployeesRoutes from "./BackEnd/src/routes/registerEmployee.js"
 import cookieParser from "cookie-parser"
-import loginRoutes from "../BackEnd/src/routes/login.js"
-import logoutRoutes from "../BackEnd/src/routes/logout.js"
-import registerClients from "../BackEnd/src/routes/registerClients.js"
-import blogRoutes from "../BackEnd/src/routes/blog.js"//importo la ruta de los blogs
-import faqsRoutes from "../BackEnd/src/routes/faqs.js" //importo la ruta de los faqs
-import salesRoutes from "../BackEnd/src/routes/sales.js" // Importo la ruta de ventas
+import loginRoutes from "./BackEnd/src/routes/login.js"
+import logoutRoutes from "./BackEnd/src/routes/logout.js"
+import registerClients from "./BackEnd/src/routes/registerClients.js"
+import blogRoutes from "./BackEnd/src/routes/blog.js"//importo la ruta de los blogs
+import faqsRoutes from "./BackEnd/src/routes/faqs.js" //importo la ruta de los faqs
+import salesRoutes from "./BackEnd/src/routes/sales.js" // Importo la ruta de ventas
 import { validateAuthToken } from "./src/middlewares/validateAuthToken.js"
 import swaggerUi from "swagger-ui-express"
 import fs from "fs"
