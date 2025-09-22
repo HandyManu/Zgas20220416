@@ -2,7 +2,6 @@
 
 import express from "express";
 import corse from "cors"; 
-import productRoutes from "../BackEnd/src/routes/products.js"
 import ClientsRoutes from "../BackEnd/src/routes/clients.js"
 import CostumersRoutes from "../BackEnd/src/routes/costumers.js"
 import branchRoutes from "../BackEnd/src/routes/branch.js"
@@ -44,7 +43,6 @@ const swaggerDocumment = JSON.parse(
 app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocumment));
 
 app.use(express.json());
-app.use("/api/products",productRoutes);
 app.use("/api/clients",ClientsRoutes);
 app.use("/api/costumers",CostumersRoutes);
 app.use("/api/branch",branchRoutes);
